@@ -47,11 +47,11 @@ int main (){
 
 		receberJogadaDoUsuario();		
 
-		if(tratamento(checarVencedor())==0) break;
+		if(tratamento(checarVencedor()) == 0) break;
 
 		receberJogadaDaCPU();
 
-		if(tratamento(checarVencedor ())==0) break;
+		if(tratamento(checarVencedor()) == 0) break;
 	
 	} 
 	

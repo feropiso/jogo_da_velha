@@ -27,36 +27,31 @@ int tratamento(int retorno_checar_vencedor);
 
 
 
-
 int main (){
 
-setlocale(LC_ALL, "Portuguese");	
-	
-iniciarMatriz ();
+	setlocale(LC_ALL, "Portuguese");	
 
-int retorno_checa_vencedor;
+	iniciarMatriz ();
+
+	int retorno_checa_vencedor;
 	
 	while (1) {
 			
-	mostrarMatriz ();
-	
-	printf ("\n");
-	
-	printf ("Sua vez:\n");
-			
-	printf ("\n");
-		
-	receberJogadaDoUsuario();		
-	
-	if(tratamento(checarVencedor())==0)
-		
-	break;
-					
-	receberJogadaDaCPU();
-		
-	if(tratamento(checarVencedor ())==0)
-			
-	break;
+		mostrarMatriz ();
+
+		printf ("\n");
+
+		printf ("Sua vez:\n");
+
+		printf ("\n");
+
+		receberJogadaDoUsuario();		
+
+		if(tratamento(checarVencedor())==0) break;
+
+		receberJogadaDaCPU();
+
+		if(tratamento(checarVencedor ())==0) break;
 	
 	} 
 	
@@ -64,12 +59,9 @@ int retorno_checa_vencedor;
 
 
 
-
-
-
 void iniciarMatriz (){
 
-int i, j;
+	int i, j;
 
 	for (i = 0; i < 3; i++)
 	
@@ -78,19 +70,17 @@ int i, j;
 
 
 
-
-
 void mostrarMatriz (){
 
-system ("cls");
+	system ("cls");
 
-int t; 	
+	int t; 	
 
 	for (t = 0; t < 3; t++){
 	
-	printf ("\t %c | %c | %c ", casas [t][0], casas [t][1], casas [t][2]);	
+		printf ("\t %c | %c | %c ", casas [t][0], casas [t][1], casas [t][2]);	
 		
-	if (t != 2) printf ("\n\t---|---|---\n");
+		if (t != 2) printf ("\n\t---|---|---\n");
 	}
 	
 	printf ("\n");
@@ -102,67 +92,65 @@ int t;
 
 void receberJogadaDoUsuario (void){
 
-int l, c;
+	int l, c;
 
-setlocale(LC_ALL, "Portuguese");
+	setlocale(LC_ALL, "Portuguese");
 
 	while (1){
 		
-	printf ("\n");
-	
-	printf ("Digite linha (posiÁ„o de 1 a 3): ");
-	
-	scanf ("%i", &l);
-	
-	printf ("\n");
-	
-	printf ("Digite coluna (posiÁ„o de 1 a 3):");
-	
-	scanf ("%i", &c);
-	
-	printf ("\n");
-	
-		if (l < 1 || c < 1 || l > 3 || c > 3){
-			
-		l = 0;
-		c = 0;	
-		
 		printf ("\n");
-		
-		printf ("Jogada inv·lida, tente novamente.");
-		
-		printf ("\n");	
-		}
-		
-		else if (casas [l-1][c-1] != ' '){
-			
-		l = 0;
-		c = 0;	
-		
+
+		printf ("Digite linha (posi√ß√£o de 1 a 3): ");
+
+		scanf ("%i", &l);
+
 		printf ("\n");
-		
-		printf ("Jogada inv·lida, tente novamente.");
-		
-		printf ("\n");		
-		}
-				
-		else {
-			
-		casas [l-1][c-1] = 'O';	
-		
-		break;	
-		}	
+
+		printf ("Digite coluna (posi√ß√£o de 1 a 3):");
+
+		scanf ("%i", &c);
+
+		printf ("\n");
+
+			if (l < 1 || c < 1 || l > 3 || c > 3){
+
+				l = 0;
+				c = 0;	
+
+				printf ("\n");
+
+				printf ("Jogada inv√°lida, tente novamente.");
+
+				printf ("\n");	
+			}
+
+			else if (casas [l-1][c-1] != ' '){
+
+				l = 0;
+				c = 0;	
+
+				printf ("\n");
+
+				printf ("Jogada inv√°lida, tente novamente.");
+
+				printf ("\n");			
+			}
+
+			else {
+
+				casas [l-1][c-1] = 'O';	
+
+				break;	
+			}	
 	}
 			
 }
 
 
 
-
-
 void receberJogadaDaCPU (void){
 
-int i, j;
+	int i, j;
 
 	if (casas [0][0] == 'X' && casas [0][1] == 'X' &&  casas [0][2] == ' ') casas [0][2] = 'X';	
 				
@@ -265,13 +253,13 @@ int i, j;
 				
 		do {
 					
-		srand (time(NULL));
-				
-		i = rand()%3;
-				
-		j = rand()%3;
-				
-		casas [i][j] = 'X';	
+			srand (time(NULL));
+
+			i = rand()%3;
+
+			j = rand()%3;
+
+			casas [i][j] = 'X';	
 					
 		} while (casas [i][j] == ' ');	
 	}			
@@ -280,12 +268,11 @@ int i, j;
 
 
 
-
 int checarVencedor (void){
 	
-int i, j;
+	int i, j;
 
-///verifica as linhas///
+	///verifica as linhas///
 	if (casas [0][0] == 'X' && casas [0][1] == 'X' &&  casas [0][2] == 'X') return COD_DERROTA;
 	
 	else if (casas [1][0] == 'X' && casas [1][1] == 'X' &&  casas [1][2] == 'X') return COD_DERROTA;	
@@ -298,7 +285,7 @@ int i, j;
 	
 	else if (casas [2][0] == 'O' && casas [2][1] == 'O' &&  casas [2][2] == 'O') return COD_VITORIA;
 
-///verifica as colunas///	 
+	///verifica as colunas///	 
 	else if (casas [0][0] == 'X' && casas [1][0] == 'X' &&  casas [2][0] == 'X') return COD_DERROTA;
 	
 	else if (casas [0][1] == 'X' && casas [1][1] == 'X' &&  casas [2][1] == 'X') return COD_DERROTA;	
@@ -311,7 +298,7 @@ int i, j;
 	
 	else if (casas [0][2] == 'O' && casas [1][2] == 'O' &&  casas [2][2] == 'O') return COD_VITORIA;	
 	
-///verifica as diagonais///
+	///verifica as diagonais///
 	else if (casas [0][0] == 'X' && casas [1][1] == 'X' &&  casas [2][2] == 'X') return COD_DERROTA;
 	
 	else if (casas [2][0] == 'X' && casas [1][1] == 'X' &&  casas [0][2] == 'X') return COD_DERROTA;
@@ -320,8 +307,7 @@ int i, j;
 	
 	else if (casas [2][0] == 'O' && casas [1][1] == 'O' &&  casas [0][2] == 'O') return COD_VITORIA;
 		
-///verificar empate///
-
+	///verificar empate///
 	int encontrou_vazio = 0;
 
 	for (i = 0; i < 3; i++){
@@ -351,55 +337,43 @@ int tratamento(int retorno_checa_vencedor){
 
 	if (retorno_checa_vencedor == COD_VITORIA){
 	
-	mostrarMatriz ();
-	
-	printf ("\n");
-				
-	printf ("VocÍ ganhou!!!\n");
-									
-	printf ("\n");
-			
-	return 0;	
+		mostrarMatriz ();
+
+		printf ("\n");
+
+		printf ("Voc√™ ganhou!!!\n");
+
+		printf ("\n");
+
+		return 0;	
 	} 
 	
 	else if (retorno_checa_vencedor == COD_DERROTA){
 	
-	mostrarMatriz ();
-	
-	printf ("\n");
-				
-	printf ("A CPU ganhou!!!\n");
-									
-	printf ("\n");	
-	
-	return 0;	
+		mostrarMatriz ();
+
+		printf ("\n");
+
+		printf ("A CPU ganhou!!!\n");
+
+		printf ("\n");	
+
+		return 0;	
 	} 	
 	
 	else if (retorno_checa_vencedor == COD_EMPATE){
 	
-	mostrarMatriz ();
-	
-	printf ("\n");
-				
-	printf ("Jogo empatado!!!\n");
-									
-	printf ("\n");
-			
-	return 0;	
+		mostrarMatriz ();
+
+		printf ("\n");
+
+		printf ("Jogo empatado!!!\n");
+
+		printf ("\n");
+
+		return 0;	
 	} 
 	
 	return 1;
 }
-
-
-
-
-
-
-
-
-
-
-
-
 
